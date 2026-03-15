@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ─── Custom Design Tokens via @theme ─── */
+@theme {
+  --color-primary: #4F46E5;
+  --color-primary-light: #6366F1;
+  --color-primary-dark: #4338CA;
+  --color-secondary: #7C3AED;
+  --color-positive: #10B981;
+  --color-negative: #F43F5E;
+  --color-warning: #F59E0B;
+
+  --color-dark-bg: #0D0D14;
+  --color-dark-sidebar: #111118;
+  --color-dark-card: #1C1C28;
+  --color-dark-border: #2A2A3A;
+  --color-dark-text: #F1F5F9;
+  --color-dark-muted: #94A3B8;
+
+  --color-light-bg: #F4F6FB;
+  --color-light-card: #FFFFFF;
+  --color-light-border: #E5E7EB;
+  --color-light-text: #0F172A;
+  --color-light-muted: #64748B;
+}
+
+/* ─── Base Styles ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body,
+body.dark {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+/* ─── Dark Mode Utility Classes ─── */
+.dark .card-surface {
+  background-color: var(--color-dark-card);
+  border-color: var(--color-dark-border);
+}
+
+.card-surface {
+  background-color: var(--color-light-card);
+  border-color: var(--color-light-border);
+}
+
+/* ─── Scrollbar Styling ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2A2A3A;
+}
+
+/* ─── Card Shadow ─── */
+.card-shadow {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dark .card-shadow {
+  box-shadow: none;
+}
+
+/* ─── Animations ─── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* ─── Number Input Spinner Remove ─── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Dark mode root class */
+.dark {
+  color-scheme: dark;
+}
